@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--
+  GeneralsZH — Android Port — project site (GitHub Pages, docs/ folder root).
+  Visual system mirrors the Android launcher's Material 3 palette:
+  android/app/src/main/res/values/colors.xml
+    ground #0E0E11 · surface ladder #131318 → #2B2B36 · outline #3A3846
+    primary lavender #B9AEEA · on-primary #231B3F · secondary #C9C4DC
+    tertiary #F3C9C6 · status ok #7FDCA4 / warn #F2C97D / error #FFB4AB
+  The light theme derives from the same hue (soft lavender tints on near-white).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GeneralsZH — Android Port · Zero Hour on your phone</title>
+<meta name="description" content="Unofficial community port of Command & Conquer: Generals — Zero Hour to Android. Native ARM64 engine, Vulkan or OpenGL ES rendering, touch controls, GeneralsOnline multiplayer with PC cross-play." />
+<meta property="og:title" content="GeneralsZH — Android Port" />
+<meta property="og:description" content="The real 2003 Zero Hour engine, natively on Android — Vulkan & GLES renderers, native touch RTS controls, online cross-play with PC." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://redaf12-tech.github.io/GeneralsZH-Android-Port/assets/og-card.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="stylesheet" href="assets/style.css" />
+<script>
+  // Apply the saved/OS theme before first paint to avoid a flash.
+  (function () {
+    try {
+      var saved = localStorage.getItem("gzh-theme");
+      var dark = saved ? saved === "dark"
+        : !window.matchMedia("(prefers-color-scheme: light)").matches;
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    } catch (e) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <svg class="brand-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l2.5 6.2 6.7.5-5.1 4.3 1.6 6.5L12 15.8l-5.7 3.5 1.6-6.5-5.1-4.3 6.7-.5z"/></svg>
+      <span>Generals<b>ZH</b></span>
+      <small>Android Port</small>
+    </a>
+    <nav class="nav-links" aria-label="Site">
+      <a href="#features">Features</a>
+      <a href="#renderers">Renderers</a>
+      <a href="#touch">Touch</a>
+      <a href="#online">Online</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="theme-toggle" class="btn ghost icon" type="button" aria-label="Toggle dark / light theme" title="Toggle theme">
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0 2.5h1v3h-1zm0-18h1v3h-1zM3.5 11.5h3v1h-3zm14 0h3v1h-3zM5.6 4.9l2.1 2.1-.7.7-2.1-2.1zm10.6 10.6 2.1 2.1-.7.7-2.1-2.1zM5.6 19.1l2.1-2.1.7.7-2.1 2.1zM16.2 8.5l2.1-2.1.7.7-2.1 2.1z"/></svg>
+      </button>
+      <a class="btn primary" href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/releases/latest">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V6a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2zm9-14v4h4"/></svg>
+        Get the APK
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============================================================= HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="kicker">Unofficial fan port · GPL v3 engine · no emulation</p>
+      <h1>The front line just went <em>mobile</em>.</h1>
+      <p class="lede">
+        <strong>Command &amp; Conquer: Generals — Zero Hour</strong>, running natively on Android:
+        the real 2003 SAGE engine compiled for ARM64, DirectX&nbsp;8 via
+        <b>DXVK&nbsp;→&nbsp;Vulkan</b> or a native <b>OpenGL&nbsp;ES</b> renderer,
+        touch controls built for RTS — and <b>online battles against PC players</b>.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary lg" href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/releases/latest">⬇ Download latest APK</a>
+        <a class="btn ghost lg" href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port">★ View on GitHub</a>
+      </div>
+      <ul class="hero-facts">
+        <li><b>v1.3.0</b><span>cross-play release</span></li>
+        <li><b>30 / 60 Hz</b><span>sim in one APK</span></li>
+        <li><b>13</b><span>text languages</span></li>
+        <li><b>0</b><span>game assets shipped</span></li>
+      </ul>
+      <p class="asset-note">No game assets are included — bring your own copy
+      (<a href="https://store.steampowered.com/app/2732960/">Steam</a>, ~$5 on sale).</p>
+    </div>
+    <div class="hero-card" aria-hidden="true">
+      <div class="phone">
+        <div class="phone-bar"><i></i><i></i><i></i></div>
+        <div class="phone-screen">
+          <div class="hud hud-tl"></div><div class="hud hud-tr"></div>
+          <div class="sel-box"></div>
+          <div class="tap-ring r1"></div><div class="tap-ring r2"></div>
+          <div class="minimap"></div>
+          <div class="cmdbar">
+            <span class="slot s1"></span><span class="slot s2"></span><span class="slot s3"></span>
+            <span class="slot s4"></span><span class="slot s5"></span><span class="slot page">»</span>
+          </div>
+        </div>
+        <div class="phone-glow"></div>
+      </div>
+      <div class="chip chip-a">DX8 → DXVK → Vulkan</div>
+      <div class="chip chip-b">DX8 → GLES 3.0</div>
+      <div class="chip chip-c">native touch · no mouse emulation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= NINE GENERALS -->
+<section class="generals">
+  <div class="wrap">
+    <div class="factions">
+      <div class="faction usa"><h3>USA</h3><ul><li><b>Granger</b> — air power</li><li><b>Alexander</b> — lasers</li><li><b>Townes</b> — Particle Cannon</li></ul></div>
+      <div class="faction china"><h3>China</h3><ul><li><b>Kwai</b> — Overlord steamroll</li><li><b>Tao</b> — nuclear fire</li><li><b>Fai</b> — infantry waves</li></ul></div>
+      <div class="faction gla"><h3>GLA</h3><ul><li><b>Dr. Thrax</b> — toxins</li><li><b>Juhziz</b> — demolition</li><li><b>Kassad</b> — stealth</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= FEATURES -->
+<section id="features" class="section">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>Everything the 2003 game does — in your pocket</h2>
+      <p>Campaign, skirmish and the Generals Challenge run unmodified. Everything around the engine was rebuilt for a phone.</p>
+    </header>
+    <div class="grid cards-3">
+      <article class="card">
+        <div class="ico">🖥️</div>
+        <h3>Two native renderers</h3>
+        <p><b>OpenGL ES 3.0</b> (DX8 → GLES, written for this port) is the default and works on every device tested so far. <b>Vulkan</b> via DXVK is one tap away and faster where the driver handles it — with an adaptive Vulkan 1.1 fallback for Mali GPUs.</p>
+      </article>
+      <article class="card">
+        <div class="ico">👆</div>
+        <h3>Touch built for RTS</h3>
+        <p>Tap-select, drag-box, two-finger pan/zoom, long-press cancel, ability aiming that follows your finger, a second command-bar page. Orders are identical to the mouse path — multiplayer and replays are unaffected.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🌐</div>
+        <h3>Online, with PC players</h3>
+        <p>GeneralsOnline: lobby, custom match, quickmatch, persona stats, friends. The phone speaks the PC client's protocol and matches its checksums — <b>cross-play since v1.3.0</b>. P2P transport with native ICE/STUN/TURN.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🗂️</div>
+        <h3>Launcher with zero adb</h3>
+        <p>One home-screen icon opens a launcher: in-app folder picker, log viewer with Clear/Share, GeneralsOnline account &amp; network data, language packs and updates. No PC needed, fully offline-capable.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🌍</div>
+        <h3>13 languages</h3>
+        <p>English plus 12 complete packs — including Arabic and Persian with real right-to-left layout and letter shaping, and CJK glyphs from your phone's own fonts. <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/blob/main/languages/README.md">Add yours</a> — no app update needed.</p>
+      </article>
+      <article class="card">
+        <div class="ico">🔄</div>
+        <h3>Updates without a new APK</h3>
+        <p>Signed engine builds and network settings arrive straight from this repository (Home → Updates). Anything unsigned is ignored; a broken engine update rolls itself back. 30 Hz retail and 60 Hz sim ship in the same APK.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= RENDER PIPELINES -->
+<section id="renderers" class="section alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>From DirectX 8 to your GPU — pick your pipeline</h2>
+      <p>Switch backends in Setup without a rebuild. The launcher names your GPU and warns you when its driver can't carry DXVK.</p>
+    </header>
+    <div class="grid cards-2">
+      <article class="card pipeline">
+        <div class="pipe-head"><span class="pill pill-default">default</span><h3>OpenGL ES 3.0</h3></div>
+        <ol class="pipe">
+          <li><b>DirectX 8</b><small>the engine's own RHI</small></li>
+          <li><b>d3d8gles</b><small>state emulation · fixed-function → GLSL · software BC1–3</small></li>
+          <li><b>OpenGL ES 3.0</b><small>optionally via ANGLE · no Vulkan at all</small></li>
+        </ol>
+        <p>Works on every device tested so far, including ones whose Vulkan driver renders corrupted graphics.</p>
+      </article>
+      <article class="card pipeline">
+        <div class="pipe-head"><span class="pill pill-fast">faster where it works</span><h3>Vulkan</h3></div>
+        <ol class="pipe">
+          <li><b>DirectX 8</b><small>the engine's own RHI</small></li>
+          <li><b>DXVK (Android fork)</b><small>lowered to Vulkan 1.1 with an adaptive fallback</small></li>
+          <li><b>Vulkan native</b><small>1.3 on Adreno 7xx/8xx · Turnip fallback · Mali Bifrost/Valhall</small></li>
+        </ol>
+        <p>Playable-but-CPU-bound on Vulkan-1.1-only Mali; unusable on some drivers (PowerVR BXM, Xclipse) — that's why GLES is the default.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= TOUCH -->
+<section id="touch" class="section">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>A finger is not a mouse</h2>
+      <p>Every battlefield gesture is resolved against the engine's own decision-making — then mapped to the exact order the mouse path would produce.</p>
+    </header>
+    <div class="grid gestures">
+      <div class="card g"><div class="g-ic">👆</div><div><h4>Tap</h4><p>Select under your finger — or give the order that point implies: move, attack, enter, repair.</p></div></div>
+      <div class="card g"><div class="g-ic">👆👆</div><div><h4>Double-tap</h4><p>Select every unit of that type on screen.</p></div></div>
+      <div class="card g"><div class="g-ic">✊➜</div><div><h4>Hold &amp; drag</h4><p>Selection box · a plain drag pans the camera directly.</p></div></div>
+      <div class="card g"><div class="g-ic">🤏</div><div><h4>Two fingers</h4><p>Pan and zoom together, pinch or anchor.</p></div></div>
+      <div class="card g"><div class="g-ic">⏱️</div><div><h4>Long press · 0.6 s</h4><p>Cancel an armed ability or pending building — otherwise clear the selection.</p></div></div>
+      <div class="card g"><div class="g-ic">🎯</div><div><h4>Ability aimed</h4><p>The radius circle follows your finger; release fires; a second finger cancels.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= ONLINE -->
+<section id="online" class="section alt">
+  <div class="wrap">
+    <header class="sec-head">
+      <h2>Meet PC commanders on the same battlefield</h2>
+      <p>The long-dead GameSpy servers were replaced by the community-run <a href="https://www.playgenerals.online">GeneralsOnline</a> — this port brings its client to Android and, since v1.3.0, makes PC lobbies accept it.</p>
+    </header>
+    <div class="grid cards-4">
+      <div class="card o"><h4>Lobby &amp; chat</h4><p>Create, browse and join rooms with live player lists.</p></div>
+      <div class="card o"><h4>Quickmatch</h4><p>One-tap matchmaking against real opponents.</p></div>
+      <div class="card o"><h4>Persona &amp; rank</h4><p>Stats and ladder tracked by the service.</p></div>
+      <div class="card o"><h4>Friends</h4><p>The Communicator: friends &amp; social, in your pocket.</p></div>
+    </div>
+    <p class="fineprint">Cross-play note: the PC player turns their anti-cheat off (GeneralsOnline AntiCheat / EAC in the PC launcher). If a match desyncs, send the launcher logs and the replay in a GitHub issue — that's how the remaining differences are being found.</p>
+  </div>
+</section>
+
+<!-- ============================================================= FAQ -->
+<section id="faq" class="section">
+  <div class="wrap narrow">
+    <header class="sec-head"><h2>FAQ</h2></header>
+    <details>
+      <summary>Is this official? Is it legal?</summary>
+      <p>No — it's an unofficial, community-made fan port of EA's own GPL v3 source release, not affiliated with or endorsed by EA. The engine code is GPL v3; <em>Command &amp; Conquer</em> remains an EA trademark and <b>no game assets are included or distributed</b> — you must own the game (Steam, ~$5 on sale).</p>
+    </details>
+    <details>
+      <summary>Which phones does it run on?</summary>
+      <p>Android 9+ on arm64. The GLES renderer works on every device tested so far. Vulkan is fastest on Adreno 7xx/8xx, falls back adaptively on Vulkan-1.1-only Mali (playable, CPU-bound), and simply can't run on some drivers (PowerVR BXM, Samsung Xclipse) — the GLES default covers those.</p>
+    </details>
+    <details>
+      <summary>Do I really play against PC players?</summary>
+      <p>Yes — real lobbies and real matches since v1.3.0. Turn on “Play with PC players” in the launcher, install the Online game data there, and the PC side turns its anti-cheat off so the server matches you.</p>
+    </details>
+    <details>
+      <summary>Magenta textures or corrupted graphics?</summary>
+      <p>Usually missing base-<em>Generals</em> archives (<code>Terrain.big</code>, <code>Textures.big</code>, <code>W3D.big</code>) — Setup names any missing archive and can point at a separate base-game folder. If it's the Vulkan driver, switch to GLES in Setup → Render Backend. The log tells you which: <code>[gxmiss] …</code> is game files, <code>[d3d8gles] MAGENTA:</code> is format support.</p>
+    </details>
+    <details>
+      <summary>How do I install it?</summary>
+      <p>Grab the APK from <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/releases/latest">Releases</a> and sideload it — newer builds install over older ones (same signing key). Open the game's icon, pick your game folder, done. Full walkthrough: <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/blob/main/docs/port/ANDROID_PORT.md">docs/port/ANDROID_PORT.md</a>.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============================================================= CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2>General, the uplink is ready.</h2>
+    <p>Target coordinates received — grab the APK, copy your game files, engage.</p>
+    <div class="cta-row center">
+      <a class="btn primary lg" href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/releases/latest">⬇ Download latest APK</a>
+      <a class="btn ghost lg" href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/blob/main/docs/HOWTO/INSTALLATION.md">📖 Installation guide</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-grid">
+    <div>
+      <b>GeneralsZH — Android Port</b>
+      <p>An unofficial fan port. Not affiliated with, endorsed by or produced by Electronic Arts, Westwood Studios or any other rights holder. <em>Command &amp; Conquer</em> is a trademark of Electronic Arts. Engine code GPL v3; game assets not included.</p>
+    </div>
+    <div>
+      <h5>Project</h5>
+      <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port">GitHub repository</a>
+      <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/releases/latest">Releases</a>
+      <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/blob/main/docs/port/ANDROID_PORT.md">Port documentation</a>
+    </div>
+    <div>
+      <h5>Community</h5>
+      <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/issues">Issues</a>
+      <a href="https://github.com/redaF12-Tech/GeneralsZH-Android-Port/blob/main/CONTRIBUTING.md">Contributing</a>
+      <a href="https://www.playgenerals.online">GeneralsOnline</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Theme toggle — persists to localStorage, mirrors <html data-theme>.
+  (function () {
+    var root = document.documentElement, btn = document.getElementById("theme-toggle");
+    btn.addEventListener("click", function () {
+      var dark = root.dataset.theme !== "dark";
+      root.dataset.theme = dark ? "dark" : "light";
+      try { localStorage.setItem("gzh-theme", dark ? "dark" : "light"); } catch (e) {}
+    });
+  })();
+
+  // Soft scroll for in-page anchors under the fixed nav.
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var el = document.querySelector(a.getAttribute("href"));
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: "smooth", block: "start" }); }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Open Graph card: GeneralsZH — Android Port -->
+  <rect width="1200" height="630" fill="#0E0E11"/>
+  <g stroke="#B9AEEA" stroke-opacity="0.08">
+    <path d="M0 90h1200M0 180h1200M0 270h1200M0 360h1200M0 450h1200M0 540h1200"/>
+    <path d="M90 0v630M180 0v630M270 0v630M360 0v630M450 0v630M540 0v630M630 0v630M720 0v630M810 0v630M900 0v630M990 0v630M1080 0v630"/>
+  </g>
+  <text x="90" y="150" font-family="Segoe UI, sans-serif" font-size="30" fill="#A5A2B4" letter-spacing="6">UNOFFICIAL FAN PORT · NO EMULATION</text>
+  <text x="86" y="280" font-family="Segoe UI, sans-serif" font-weight="800" font-size="96" fill="#ECEBF2">Generals<tspan fill="#B9AEEA">ZH</tspan></text>
+  <text x="90" y="355" font-family="Segoe UI, sans-serif" font-size="40" fill="#ECEBF2">Command &amp; Conquer: Generals — Zero Hour on Android</text>
+  <text x="90" y="415" font-family="Segoe UI, sans-serif" font-size="28" fill="#A5A2B4">Native ARM64 engine · Vulkan &amp; OpenGL ES · touch RTS · online cross-play with PC</text>
+  <g transform="translate(90,470)">
+    <rect width="330" height="64" rx="14" fill="#B9AEEA"/>
+    <text x="30" y="41" font-family="Segoe UI, sans-serif" font-weight="700" font-size="26" fill="#231B3F">⬇ Get the APK · v1.3.0</text>
+  </g>
+  <path d="M1020 110l22 55 59 4-45 38 14 58-50-31-50 31 14-58-45-38 59-4z" fill="#B9AEEA"/>
+</svg>

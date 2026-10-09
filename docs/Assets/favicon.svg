@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E0E11"/>
+      <stop offset="1" stop-color="#2B2B36"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#g)"/>
+  <!-- lavender star (gzh_primary #B9AEEA) with a green touch node (gzh_status_ok) -->
+  <path d="M32 8l5.4 13.4 14.4 1-11 9.2 3.5 14-12.3-7.6-12.3 7.6 3.5-14-11-9.2 14.4-1z"
+        fill="#B9AEEA"/>
+  <circle cx="32" cy="33" r="3.2" fill="#7FDCA4"/>
+</svg>
